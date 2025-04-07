@@ -1,0 +1,711 @@
+@prefix : <http://ontomlt.com#>.
+@prefix gufo: <http://purl.org/nemo/gufo#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://ontomlt.com> rdf:type owl:Ontology;
+    owl:imports gufo:.
+:Study rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Study"@en.
+:Experiment rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Experiment"@en.
+:Run rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Run"@en.
+:Model rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Model"@en.
+:ModelCharacteristic rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Model Characteristic"@en.
+:ModelEvaluation rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Model Evaluation"@en.
+:EvaluationMeasure rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Evaluation Measure"@en.
+:EvaluationSpecification rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Evaluation Specification"@en.
+:EvaluationProcedure rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Evaluation Procedure"@en.
+:Task rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Task"@en.
+:Data rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Data"@en.
+:DataCharacteristic rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Data Characteristic"@en.
+:Dataset rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Dataset"@en.
+:Feature rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Feature"@en.
+:DatasetCharacteristic rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Dataset Characteristic"@en.
+:FeatueCharacteristic rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Featue Characteristic"@en.
+:Implementation rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Implementation"@en.
+:Software rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Software"@en.
+:Algorithm rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Algorithm"@en.
+:ImplemantationCharacteristic rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Implemantation Characteristic"@en.
+:Hyperparameter rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Hyperparameter"@en.
+:HyperparameterSetting rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Quality;
+    rdfs:label "Hyperparameter Setting"@en.
+:TestPlanning rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Test Planning"@en.
+:Requirement rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Requirement "@en.
+:Metrics rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Metrics"@en.
+:TestCaseDevelopment rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Test Case Development"@en.
+:TestCase rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Test Case"@en.
+:TestExecution rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Test Execution\n"@en.
+:ImplementationOfAutomatedTests rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Implementation of automated tests"@en.
+:ResultReport rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Result Report"@en.
+:TestResultsEvaluation rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Test Results Evaluation"@en.
+:IterationAndImprovement rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Iteration and Improvement"@en.
+:Feedback rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Feedback"@en.
+:ModelUpdate rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Model update"@en.
+:Retest rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Retest"@en.
+:Failure rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Failure"@en.
+:ModelFault rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Model Fault"@en.
+:MissingDropoutLayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing\ndropout layer"@en.
+:MissingSoftmaxActivationFunction rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing\nsoftmax activation function"@en.
+:MissingReluActivationFunction rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing relu\nactivation\nfunction"@en.
+:WrongModelInitialisation rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong model\ninitialisation"@en.
+:WrongAmountTypeOfPoolingInConvolutionalLayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong amount &\ntype of pooling\nin convolutional\nlayer"@en.
+:LayerFault rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Layer Fault"@en.
+:ActivationFunction rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Activation\nFunction"@en.
+:ModelType rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Model Type "@en.
+:LayerProperties rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Layer Properties"@en.
+:Hardware rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Hardware"@en.
+:GPU rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "GPU"@en.
+:GPUFault rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "GPU Fault"@en.
+:API rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "API"@en.
+:APIFault rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "API Fault"@en.
+:Tensor rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Tensor"@en.
+:DataInput rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Data Input"@en.
+:InputFault rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Input Fault"@en.
+:TensorShapeFault rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Tensor Shape Fault"@en.
+:MissingDestinationGPUDevice rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing\ndestination\nGPU device"@en.
+:IncorrectStateSharing rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Incorrect\nstate\nsharing"@en.
+:WrongReferenceToGPUDevice rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong\nreference to\nGPU device"@en.
+:MissingTransferOfDataToGPU rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing\ntransfer of\ndata to GPU"@en.
+:GPUTensorIsUsedInsteadOfCPUTensor rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "GPU tensor is\nused instead of\nCPU tensor"@en.
+:WrongDataParallelismOnGPUs rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong data\nparallelism on\nGPUs"@en.
+:CallingUnsupportedOperationsOnCUDATensors rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Calling\nunsupported\noperations on\nCUDA tensors"@en.
+:ConversionToCUDATensorInsideTheTrainingtestLoo rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Conversion to\nCUDA tensor\ninside the\ntraining/test loo"@en.
+:WronglyImplementedDataTransferFunctionCPUGPU rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrongly\nimplemented data\ntransfer function\n(CPU-GPU)"@en.
+:DeprecatedAPI rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Deprecated API"@en.
+:WrongUsageOfImageDecodingAPI rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong usage\nof image\ndecoding API"@en.
+:WrongUsageOfPlaceholderRestorationAPI rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong usage\nof placeholder\nrestoration API"@en.
+:MissingArgumentScoping rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing\nargument\nscoping"@en.
+:WrongPositionOfDataShuffleOperation rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong position of data shuffle operation"@en.
+:MissingGlobalVariablesInitialisation rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing global\nvariables\ninitialisation"@en.
+:MissingAPICall rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing API\ncall"@en.
+:WorongReferenceToOperationalGraph rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Worong reference to\noperational\ngraph"@en.
+:ModelProperties rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Model Properties"@en.
+:WrongWeightsInitialisation rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong\nweights initialisation"@en.
+:ModelTypeWrongSelection rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Model Type Wrong Selection "@en.
+:WrongNetworkArchitecture rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong network\narchitecture"@en.
+:SuboptimalNetworkStructure rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Suboptimal network\nstructure"@en.
+:MultipleInitialisationsOfCNN rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Multiple initialisations\nof CNN"@en.
+:WrongTypeOfActivationFunction rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong type of activation function"@en.
+:WrongInputSampleSizeForLinearLayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong input\nsample size\nfor linear layer"@en.
+:WrongDefinedInputShape rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong\ndefined input\nshape"@en.
+:WrongDefinedOutputShape rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong\ndefined\noutput shape"@en.
+:WrongDefinedInputOutputShape rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong defined\ninput & output\nshape"@en.
+:WrongFilterSizeForAConvolutionalLayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong filter size\nfor a convolutional\nlayer"@en.
+:BiasNeededInALayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Bias needed\nin a layer"@en.
+:SuboptimalNumberOfNeuronsInTheLayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Suboptimal\nnumber of\nneurons in the\nlayer"@en.
+:LayersDimensionsMismatch rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Layers'\ndimensions\nmismatch"@en.
+:WrongLayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Wrong Layer "@en.
+:MissingNormalisLayers rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing\nnormalis layers"@en.
+:MissingSoftmaxLayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing\nsoftmax layer"@en.
+:RedundantSoftmaxLayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Redundant\nsoftmax layer"@en.
+:WrongLayerType rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong layer\ntype"@en.
+:MissingFlattenLayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing\nflatten layer"@en.
+:MissingDenseLayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing\ndense layer"@en.
+:MissingAveragePoolingLayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing\naverage pooling layer"@en.
+:WrongTypeOfPoolingLayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong type\nof pooling\nlayer"@en.
+:WrongShapeOfInputData rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong shape\nof input data"@en.
+:WrongShapeOfInputDataForALayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong shape\nof input data\nfor a layer"@en.
+:WrongShapeOfInputDataForAMethod rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong shape\nof input data\nfor a method"@en.
+:WrongTypeOfInputDataForAMethod rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong type\nof input data\nfor a method"@en.
+:WrongTypeOfInputDataForALayer rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong type\nof input data\nfor a layer"@en.
+:wrongTypeOfInputData rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "wrong type\nof input data"@en.
+:MissingSqueeze rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing\nsqueeze"@en.
+:WrongIndexing rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong\nindexing"@en.
+:WrongOutputPadding rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong\noutput\npadding"@en.
+:IncorrectLearningRate rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Incorrect learning rate"@en.
+:HyperparameterFault rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Hyperparameter Fault"@en.
+:IncorrectDataBatchSize rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Incorrect data batch size"@en.
+:IncorrectNumberOfEpochs rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Incorrect number of epochs"@en.
+:SuboptimalBatchSize rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Suboptimal batch size"@en.
+:WronglyImplementedDataBatching rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrongly implemented data batching"@en.
+:MissingRegularizationlossAndWeight rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing regularization (loss and weight)"@en.
+:TrainingDataFaults rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Training Data Faults"@en.
+:WrongLabelsForTrainingData rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong labels\nfor training data"@en.
+:WrongSelectionOfFeatures rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong\nselection of features"@en.
+:UnbalancedTrainingData rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Unbalanced\ntraining data"@en.
+:NotEnoughTrainingData rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Not enough\ntraining data"@en.
+:LowQualityTrainingData rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Low quality\ntraining data"@en.
+:OverlappingOutputClassesInTrainingData rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Overlapping\noutput classes in\ntraining data"@en.
+:TooManyOutputCategories rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Too many\noutput\ncategories"@en.
+:SmallRangeOfValuesForAFeature rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Small range of\nvalues for a\nfeature"@en.
+:DiscardingImportantFeatures rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Discarding\nimportant\nfeatures"@en.
+:ModelTraning rdf:type owl:Class, gufo:EventType, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Event;
+    rdfs:label "Model Traning"@en.
+:ModelTrainingFault rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "Model Training Fault"@en.
+:WrongManagementOfMemoryResources rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Wrong\nmanagement of\nmemory\nresources"@en.
+:ReferenceForNonExistingCheckpoint rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Reference for\nnon-existing\ncheckpoint"@en.
+:RedundantDataAugmentatio rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Redundant\ndata\naugmentatio"@en.
+:MissingDataAugmentatio rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Missing data\naugmentatio"@en.
+:ModelTooBigToFitIntoAvailableMemory rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Model too big to\nfit into available\nmemory"@en.
+:Study rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf ];
+  owl:someValuesFrom :Experiment
+].
+:Experiment rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:isEventProperPartOf;
+  owl:someValuesFrom :Study
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf ];
+  owl:someValuesFrom :Run
+].
+:Run rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:isEventProperPartOf;
+  owl:someValuesFrom :Experiment
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :Model
+].
+:Model rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ModelCharacteristic
+].
+:ModelCharacteristic rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Model
+].
+:Run rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :ModelEvaluation
+].
+:EvaluationMeasure rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :ModelEvaluation
+].
+:EvaluationSpecification rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:historicallyDependsOn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :EvaluationMeasure
+].
+:EvaluationProcedure rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:historicallyDependsOn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :EvaluationSpecification
+].
+:Task rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:historicallyDependsOn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Data
+].
+:Run rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :Task
+].
+:Data rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :DataCharacteristic
+].
+:DataCharacteristic rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Data
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :DatasetCharacteristic
+].
+:DatasetCharacteristic rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :DataCharacteristic
+].
+:DataCharacteristic rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :FeatueCharacteristic
+].
+:FeatueCharacteristic rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :DataCharacteristic
+].
+:Run rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :Data
+].
+:EvaluationMeasure rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:wasCreatedIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Task
+].
+:Task rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:wasCreatedIn;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :EvaluationMeasure
+].
+:Implementation rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:historicallyDependsOn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Run
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :Software
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :Algorithm
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ImplemantationCharacteristic
+].
+:ImplemantationCharacteristic rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Implementation
+].
+:Implementation rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :Hyperparameter
+].
+:Hyperparameter rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:inheresIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :HyperparameterSetting
+].
+:HyperparameterSetting rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:inheresIn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Hyperparameter
+].
+:TestPlanning rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :Task
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :Requirement
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :Metrics
+].
+:TestCaseDevelopment rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:wasCreatedIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Dataset
+].
+:Dataset rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:wasCreatedIn;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :TestCaseDevelopment
+].
+:TestCaseDevelopment rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:wasCreatedIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :TestCase
+].
+:TestCase rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:wasCreatedIn;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :TestCaseDevelopment
+].
+:TestExecution rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:historicallyDependsOn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Run
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf ];
+  owl:someValuesFrom :ImplementationOfAutomatedTests
+].
+:ImplementationOfAutomatedTests rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:isEventProperPartOf;
+  owl:someValuesFrom :TestExecution
+].
+:TestResultsEvaluation rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:wasCreatedIn ];
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ResultReport
+].
+:ResultReport rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:wasCreatedIn;
+  owl:someValuesFrom :TestResultsEvaluation
+].
+:TestResultsEvaluation rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:historicallyDependsOn;
+  owl:someValuesFrom :TestExecution
+].
+:IterationAndImprovement rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:wasCreatedIn ];
+  owl:someValuesFrom :Feedback
+].
+:Feedback rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:wasCreatedIn;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :IterationAndImprovement
+].
+:IterationAndImprovement rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf ];
+  owl:someValuesFrom :ModelUpdate
+].
+:ModelUpdate rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:isEventProperPartOf;
+  owl:someValuesFrom :IterationAndImprovement
+].
+:Retest rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:historicallyDependsOn;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :ModelUpdate
+].
+:IterationAndImprovement rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:wasCreatedIn ];
+  owl:someValuesFrom :ResultReport
+].
+:ResultReport rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:wasCreatedIn;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :IterationAndImprovement
+].
+:Model rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:historicallyDependsOn ];
+  owl:someValuesFrom :ModelFault
+].
+:ModelFault rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:historicallyDependsOn;
+  owl:someValuesFrom :Model
+].
+:Implementation rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :Hardware
+].
+:API rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:historicallyDependsOn ];
+  owl:someValuesFrom :APIFault
+].
+:APIFault rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:historicallyDependsOn;
+  owl:someValuesFrom :API
+].
+:TensorShapeFault rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:isSubCollectionOf;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :Tensor
+].
+:InputFault rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty gufo:isSubCollectionOf;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass :DataInput
+].
+:Model rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:historicallyDependsOn ];
+  owl:someValuesFrom :Run
+].
+:ModelTraning rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf gufo:participatedIn ];
+  owl:someValuesFrom :ModelTrainingFault
+].

@@ -1,0 +1,2136 @@
+@prefix : <http://ontomlt.com#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix obda: <https://w3id.org/obda/vocabulary#> .
+@prefix onto: <http://ontomlt.com#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://ontomlt.com#> .
+
+<http://ontomlt.com> rdf:type owl:Ontology ;
+                      owl:imports gufo: .
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://ontomlt.com#faultName
+onto:faultName rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://ontomlt.com#API
+onto:API rdf:type owl:Class ;
+         rdfs:subClassOf gufo:VariableCollection ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty [ owl:inverseOf gufo:historicallyDependsOn
+                                          ] ;
+                           owl:someValuesFrom onto:APIFault
+                         ] .
+
+
+###  http://ontomlt.com#APIFault
+onto:APIFault rdf:type owl:Class ;
+              rdfs:subClassOf gufo:VariableCollection ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty gufo:historicallyDependsOn ;
+                                owl:someValuesFrom onto:API
+                              ] .
+
+
+###  http://ontomlt.com#ActivationFunction
+onto:ActivationFunction rdf:type owl:Class ;
+                        rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#Algorithm
+onto:Algorithm rdf:type owl:Class ;
+               rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#BiasNeededInALayer
+onto:BiasNeededInALayer rdf:type owl:Class ;
+                        rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#CallingUnsupportedOperationsOnCUDATensors
+onto:CallingUnsupportedOperationsOnCUDATensors rdf:type owl:Class ;
+                                               rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#Class
+onto:Class rdf:type owl:Class ;
+           rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#ConversionToCUDATensorInsideTheTrainingtestLoo
+onto:ConversionToCUDATensorInsideTheTrainingtestLoo rdf:type owl:Class ;
+                                                    rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#Data
+onto:Data rdf:type owl:Class ;
+          rdfs:subClassOf gufo:FunctionalComplex ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                           ] ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass onto:DataCharacteristic
+                          ] .
+
+
+###  http://ontomlt.com#DataCharacteristic
+onto:DataCharacteristic rdf:type owl:Class ;
+                        rdfs:subClassOf gufo:Quality ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty gufo:inheresIn ;
+                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass onto:Data
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                         ] ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass onto:DatasetCharacteristic
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                         ] ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass onto:FeatueCharacteristic
+                                        ] .
+
+
+###  http://ontomlt.com#DataInput
+onto:DataInput rdf:type owl:Class ;
+               rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#Dataset
+onto:Dataset rdf:type owl:Class ;
+             rdfs:subClassOf gufo:VariableCollection ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty gufo:wasCreatedIn ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass onto:TestCaseDevelopment
+                             ] .
+
+
+###  http://ontomlt.com#DatasetCharacteristic
+onto:DatasetCharacteristic rdf:type owl:Class ;
+                           rdfs:subClassOf gufo:Quality ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty gufo:inheresIn ;
+                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                             owl:onClass onto:DataCharacteristic
+                                           ] .
+
+
+###  http://ontomlt.com#DeprecatedAPI
+onto:DeprecatedAPI rdf:type owl:Class ;
+                   rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#DiscardingImportantFeatures
+onto:DiscardingImportantFeatures rdf:type owl:Class ;
+                                 rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#EvaluationMeasure
+onto:EvaluationMeasure rdf:type owl:Class ;
+                       rdfs:subClassOf gufo:Event ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                        ] ;
+                                         owl:someValuesFrom onto:ModelEvaluation
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                                        ] ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass onto:Task
+                                       ] .
+
+
+###  http://ontomlt.com#EvaluationProcedure
+onto:EvaluationProcedure rdf:type owl:Class ;
+                         rdfs:subClassOf gufo:Event ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty gufo:historicallyDependsOn ;
+                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass onto:EvaluationSpecification
+                                         ] .
+
+
+###  http://ontomlt.com#EvaluationSpecification
+onto:EvaluationSpecification rdf:type owl:Class ;
+                             rdfs:subClassOf gufo:Event ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty gufo:historicallyDependsOn ;
+                                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                               owl:onClass onto:EvaluationMeasure
+                                             ] .
+
+
+###  http://ontomlt.com#Experiment
+onto:Experiment rdf:type owl:Class ;
+                rdfs:subClassOf gufo:Event ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty gufo:isEventProperPartOf ;
+                                  owl:someValuesFrom onto:Study
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf
+                                                 ] ;
+                                  owl:someValuesFrom onto:Run
+                                ] .
+
+
+###  http://ontomlt.com#Failure
+onto:Failure rdf:type owl:Class ;
+             rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#FeatueCharacteristic
+onto:FeatueCharacteristic rdf:type owl:Class ;
+                          rdfs:subClassOf gufo:Quality ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty gufo:inheresIn ;
+                                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onClass onto:DataCharacteristic
+                                          ] .
+
+
+###  http://ontomlt.com#Feature
+onto:Feature rdf:type owl:Class ;
+             rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#Feedback
+onto:Feedback rdf:type owl:Class ;
+              rdfs:subClassOf gufo:FunctionalComplex ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty gufo:wasCreatedIn ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass onto:IterationAndImprovement
+                              ] .
+
+
+###  http://ontomlt.com#GPU
+onto:GPU rdf:type owl:Class ;
+         rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#GPUFault
+onto:GPUFault rdf:type owl:Class ;
+              rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#GPUTensorIsUsedInsteadOfCPUTensor
+onto:GPUTensorIsUsedInsteadOfCPUTensor rdf:type owl:Class ;
+                                       rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#Hardware
+onto:Hardware rdf:type owl:Class ;
+              rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#Hyperparameter
+onto:Hyperparameter rdf:type owl:Class ;
+                    rdfs:subClassOf gufo:VariableCollection ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                     ] ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass onto:HyperparameterSetting
+                                    ] .
+
+
+###  http://ontomlt.com#HyperparameterFault
+onto:HyperparameterFault rdf:type owl:Class ;
+                         rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#HyperparameterSetting
+onto:HyperparameterSetting rdf:type owl:Class ;
+                           rdfs:subClassOf gufo:Quality ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty gufo:inheresIn ;
+                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                             owl:onClass onto:Hyperparameter
+                                           ] .
+
+
+###  http://ontomlt.com#ImplemantationCharacteristic
+onto:ImplemantationCharacteristic rdf:type owl:Class ;
+                                  rdfs:subClassOf gufo:Quality ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty gufo:inheresIn ;
+                                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                    owl:onClass onto:Implementation
+                                                  ] .
+
+
+###  http://ontomlt.com#Implementation
+onto:Implementation rdf:type owl:Class ;
+                    rdfs:subClassOf gufo:Event ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                     ] ;
+                                      owl:someValuesFrom onto:Algorithm
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                     ] ;
+                                      owl:someValuesFrom onto:Hardware
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                     ] ;
+                                      owl:someValuesFrom onto:Hyperparameter
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                     ] ;
+                                      owl:someValuesFrom onto:Software
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty gufo:historicallyDependsOn ;
+                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass onto:Run
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                                     ] ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass onto:ImplemantationCharacteristic
+                                    ] .
+
+
+###  http://ontomlt.com#ImplementationOfAutomatedTests
+onto:ImplementationOfAutomatedTests rdf:type owl:Class ;
+                                    rdfs:subClassOf gufo:Event ,
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty gufo:isEventProperPartOf ;
+                                                      owl:someValuesFrom onto:TestExecution
+                                                    ] .
+
+
+###  http://ontomlt.com#IncorrectDataBatchSize
+onto:IncorrectDataBatchSize rdf:type owl:Class ;
+                            rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#IncorrectLearningRate
+onto:IncorrectLearningRate rdf:type owl:Class ;
+                           rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#IncorrectNumberOfEpochs
+onto:IncorrectNumberOfEpochs rdf:type owl:Class ;
+                             rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#IncorrectStateSharing
+onto:IncorrectStateSharing rdf:type owl:Class ;
+                           rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#InputFault
+onto:InputFault rdf:type owl:Class ;
+                rdfs:subClassOf gufo:VariableCollection ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty gufo:isSubCollectionOf ;
+                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass onto:DataInput
+                                ] .
+
+
+###  http://ontomlt.com#IterationAndImprovement
+onto:IterationAndImprovement rdf:type owl:Class ;
+                             rdfs:subClassOf gufo:Event ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf
+                                                              ] ;
+                                               owl:someValuesFrom onto:ModelUpdate
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                                              ] ;
+                                               owl:someValuesFrom onto:Feedback
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                                              ] ;
+                                               owl:someValuesFrom onto:ResultReport
+                                             ] .
+
+
+###  http://ontomlt.com#LayerFault
+onto:LayerFault rdf:type owl:Class ;
+                rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#LayerProperties
+onto:LayerProperties rdf:type owl:Class ;
+                     rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#LayersDimensionsMismatch
+onto:LayersDimensionsMismatch rdf:type owl:Class ;
+                              rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#LowQualityTrainingData
+onto:LowQualityTrainingData rdf:type owl:Class ;
+                            rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#Metrics
+onto:Metrics rdf:type owl:Class ;
+             rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#MissingAPICall
+onto:MissingAPICall rdf:type owl:Class ;
+                    rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingArgumentScoping
+onto:MissingArgumentScoping rdf:type owl:Class ;
+                            rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingAveragePoolingLayer
+onto:MissingAveragePoolingLayer rdf:type owl:Class ;
+                                rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingDataAugmentatio
+onto:MissingDataAugmentatio rdf:type owl:Class ;
+                            rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingDenseLayer
+onto:MissingDenseLayer rdf:type owl:Class ;
+                       rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingDestinationGPUDevice
+onto:MissingDestinationGPUDevice rdf:type owl:Class ;
+                                 rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingDropoutLayer
+onto:MissingDropoutLayer rdf:type owl:Class ;
+                         rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingFlattenLayer
+onto:MissingFlattenLayer rdf:type owl:Class ;
+                         rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingGlobalVariablesInitialisation
+onto:MissingGlobalVariablesInitialisation rdf:type owl:Class ;
+                                          rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingNormalisLayers
+onto:MissingNormalisLayers rdf:type owl:Class ;
+                           rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingRegularizationlossAndWeight
+onto:MissingRegularizationlossAndWeight rdf:type owl:Class ;
+                                        rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingReluActivationFunction
+onto:MissingReluActivationFunction rdf:type owl:Class ;
+                                   rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingSoftmaxActivationFunction
+onto:MissingSoftmaxActivationFunction rdf:type owl:Class ;
+                                      rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingSoftmaxLayer
+onto:MissingSoftmaxLayer rdf:type owl:Class ;
+                         rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingSqueeze
+onto:MissingSqueeze rdf:type owl:Class ;
+                    rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#MissingTransferOfDataToGPU
+onto:MissingTransferOfDataToGPU rdf:type owl:Class ;
+                                rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#Model
+onto:Model rdf:type owl:Class ;
+           rdfs:subClassOf gufo:FunctionalComplex ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty [ owl:inverseOf gufo:historicallyDependsOn
+                                            ] ;
+                             owl:someValuesFrom onto:ModelFault
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty [ owl:inverseOf gufo:historicallyDependsOn
+                                            ] ;
+                             owl:someValuesFrom onto:Run
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty [ owl:inverseOf gufo:inheresIn
+                                            ] ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass onto:ModelCharacteristic
+                           ] .
+
+
+###  http://ontomlt.com#ModelCharacteristic
+onto:ModelCharacteristic rdf:type owl:Class ;
+                         rdfs:subClassOf gufo:Quality ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty gufo:inheresIn ;
+                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass onto:Model
+                                         ] .
+
+
+###  http://ontomlt.com#ModelEvaluation
+onto:ModelEvaluation rdf:type owl:Class ;
+                     rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#ModelFault
+onto:ModelFault rdf:type owl:Class ;
+                rdfs:subClassOf gufo:VariableCollection ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty gufo:historicallyDependsOn ;
+                                  owl:someValuesFrom onto:Model
+                                ] .
+
+
+###  http://ontomlt.com#ModelProperties
+onto:ModelProperties rdf:type owl:Class ;
+                     rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#ModelTooBigToFitIntoAvailableMemory
+onto:ModelTooBigToFitIntoAvailableMemory rdf:type owl:Class ;
+                                         rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#ModelTrainingFault
+onto:ModelTrainingFault rdf:type owl:Class ;
+                        rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#ModelTraning
+onto:ModelTraning rdf:type owl:Class ;
+                  rdfs:subClassOf gufo:Event ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                   ] ;
+                                    owl:someValuesFrom onto:ModelTrainingFault
+                                  ] .
+
+
+###  http://ontomlt.com#ModelType
+onto:ModelType rdf:type owl:Class ;
+               rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#ModelTypeWrongSelection
+onto:ModelTypeWrongSelection rdf:type owl:Class ;
+                             rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#ModelUpdate
+onto:ModelUpdate rdf:type owl:Class ;
+                 rdfs:subClassOf gufo:Event ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty gufo:isEventProperPartOf ;
+                                   owl:someValuesFrom onto:IterationAndImprovement
+                                 ] .
+
+
+###  http://ontomlt.com#MultipleInitialisationsOfCNN
+onto:MultipleInitialisationsOfCNN rdf:type owl:Class ;
+                                  rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#NotEnoughTrainingData
+onto:NotEnoughTrainingData rdf:type owl:Class ;
+                           rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#OverlappingOutputClassesInTrainingData
+onto:OverlappingOutputClassesInTrainingData rdf:type owl:Class ;
+                                            rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#RedundantDataAugmentatio
+onto:RedundantDataAugmentatio rdf:type owl:Class ;
+                              rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#RedundantSoftmaxLayer
+onto:RedundantSoftmaxLayer rdf:type owl:Class ;
+                           rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#ReferenceForNonExistingCheckpoint
+onto:ReferenceForNonExistingCheckpoint rdf:type owl:Class ;
+                                       rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#Requirement
+onto:Requirement rdf:type owl:Class ;
+                 rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#ResultReport
+onto:ResultReport rdf:type owl:Class ;
+                  rdfs:subClassOf gufo:FunctionalComplex ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty gufo:wasCreatedIn ;
+                                    owl:someValuesFrom onto:TestResultsEvaluation
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty gufo:wasCreatedIn ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass onto:IterationAndImprovement
+                                  ] .
+
+
+###  http://ontomlt.com#Retest
+onto:Retest rdf:type owl:Class ;
+            rdfs:subClassOf gufo:Event ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty gufo:historicallyDependsOn ;
+                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass onto:ModelUpdate
+                            ] .
+
+
+###  http://ontomlt.com#Run
+onto:Run rdf:type owl:Class ;
+         rdfs:subClassOf gufo:Event ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty gufo:isEventProperPartOf ;
+                           owl:someValuesFrom onto:Experiment
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                          ] ;
+                           owl:someValuesFrom onto:Data
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                          ] ;
+                           owl:someValuesFrom onto:Model
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                          ] ;
+                           owl:someValuesFrom onto:ModelEvaluation
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                          ] ;
+                           owl:someValuesFrom onto:Task
+                         ] .
+
+
+###  http://ontomlt.com#SmallRangeOfValuesForAFeature
+onto:SmallRangeOfValuesForAFeature rdf:type owl:Class ;
+                                   rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#Software
+onto:Software rdf:type owl:Class ;
+              rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#Study
+onto:Study rdf:type owl:Class ;
+           rdfs:subClassOf gufo:Event ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf
+                                            ] ;
+                             owl:someValuesFrom onto:Experiment
+                           ] .
+
+
+###  http://ontomlt.com#SuboptimalBatchSize
+onto:SuboptimalBatchSize rdf:type owl:Class ;
+                         rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#SuboptimalNetworkStructure
+onto:SuboptimalNetworkStructure rdf:type owl:Class ;
+                                rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#SuboptimalNumberOfNeuronsInTheLayer
+onto:SuboptimalNumberOfNeuronsInTheLayer rdf:type owl:Class ;
+                                         rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#Task
+onto:Task rdf:type owl:Class ;
+          rdfs:subClassOf gufo:FunctionalComplex ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty gufo:historicallyDependsOn ;
+                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass onto:Data
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty gufo:wasCreatedIn ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass onto:EvaluationMeasure
+                          ] .
+
+
+###  http://ontomlt.com#Tensor
+onto:Tensor rdf:type owl:Class ;
+            rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#TensorShapeFault
+onto:TensorShapeFault rdf:type owl:Class ;
+                      rdfs:subClassOf gufo:VariableCollection ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty gufo:isSubCollectionOf ;
+                                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                        owl:onClass onto:Tensor
+                                      ] .
+
+
+###  http://ontomlt.com#TestCase
+onto:TestCase rdf:type owl:Class ;
+              rdfs:subClassOf gufo:VariableCollection ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty gufo:wasCreatedIn ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass onto:TestCaseDevelopment
+                              ] .
+
+
+###  http://ontomlt.com#TestCaseDevelopment
+onto:TestCaseDevelopment rdf:type owl:Class ;
+                         rdfs:subClassOf gufo:Event ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                                          ] ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass onto:Dataset
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                                          ] ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass onto:TestCase
+                                         ] .
+
+
+###  http://ontomlt.com#TestExecution
+onto:TestExecution rdf:type owl:Class ;
+                   rdfs:subClassOf gufo:Event ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty [ owl:inverseOf gufo:isEventProperPartOf
+                                                    ] ;
+                                     owl:someValuesFrom onto:ImplementationOfAutomatedTests
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty gufo:historicallyDependsOn ;
+                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass onto:Run
+                                   ] .
+
+
+###  http://ontomlt.com#TestPlanning
+onto:TestPlanning rdf:type owl:Class ;
+                  rdfs:subClassOf gufo:Event ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                   ] ;
+                                    owl:someValuesFrom onto:Metrics
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                   ] ;
+                                    owl:someValuesFrom onto:Requirement
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty [ owl:inverseOf gufo:participatedIn
+                                                   ] ;
+                                    owl:someValuesFrom onto:Task
+                                  ] .
+
+
+###  http://ontomlt.com#TestResultsEvaluation
+onto:TestResultsEvaluation rdf:type owl:Class ;
+                           rdfs:subClassOf gufo:Event ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty gufo:historicallyDependsOn ;
+                                             owl:someValuesFrom onto:TestExecution
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty [ owl:inverseOf gufo:wasCreatedIn
+                                                            ] ;
+                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                             owl:onClass onto:ResultReport
+                                           ] .
+
+
+###  http://ontomlt.com#TooManyOutputCategories
+onto:TooManyOutputCategories rdf:type owl:Class ;
+                             rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#TrainingDataFaults
+onto:TrainingDataFaults rdf:type owl:Class ;
+                        rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#UnbalancedTrainingData
+onto:UnbalancedTrainingData rdf:type owl:Class ;
+                            rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WorongReferenceToOperationalGraph
+onto:WorongReferenceToOperationalGraph rdf:type owl:Class ;
+                                       rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongAmountTypeOfPoolingInConvolutionalLayer
+onto:WrongAmountTypeOfPoolingInConvolutionalLayer rdf:type owl:Class ;
+                                                  rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongDataParallelismOnGPUs
+onto:WrongDataParallelismOnGPUs rdf:type owl:Class ;
+                                rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongDefinedInputOutputShape
+onto:WrongDefinedInputOutputShape rdf:type owl:Class ;
+                                  rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongDefinedInputShape
+onto:WrongDefinedInputShape rdf:type owl:Class ;
+                            rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongDefinedOutputShape
+onto:WrongDefinedOutputShape rdf:type owl:Class ;
+                             rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongFilterSizeForAConvolutionalLayer
+onto:WrongFilterSizeForAConvolutionalLayer rdf:type owl:Class ;
+                                           rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongIndexing
+onto:WrongIndexing rdf:type owl:Class ;
+                   rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongInputSampleSizeForLinearLayer
+onto:WrongInputSampleSizeForLinearLayer rdf:type owl:Class ;
+                                        rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongLabelsForTrainingData
+onto:WrongLabelsForTrainingData rdf:type owl:Class ;
+                                rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongLayer
+onto:WrongLayer rdf:type owl:Class ;
+                rdfs:subClassOf gufo:VariableCollection .
+
+
+###  http://ontomlt.com#WrongLayerType
+onto:WrongLayerType rdf:type owl:Class ;
+                    rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongManagementOfMemoryResources
+onto:WrongManagementOfMemoryResources rdf:type owl:Class ;
+                                      rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongModelInitialisation
+onto:WrongModelInitialisation rdf:type owl:Class ;
+                              rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongNetworkArchitecture
+onto:WrongNetworkArchitecture rdf:type owl:Class ;
+                              rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongOutputPadding
+onto:WrongOutputPadding rdf:type owl:Class ;
+                        rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongPositionOfDataShuffleOperation
+onto:WrongPositionOfDataShuffleOperation rdf:type owl:Class ;
+                                         rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongReferenceToGPUDevice
+onto:WrongReferenceToGPUDevice rdf:type owl:Class ;
+                               rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongSelectionOfFeatures
+onto:WrongSelectionOfFeatures rdf:type owl:Class ;
+                              rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongShapeOfInputData
+onto:WrongShapeOfInputData rdf:type owl:Class ;
+                           rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongShapeOfInputDataForALayer
+onto:WrongShapeOfInputDataForALayer rdf:type owl:Class ;
+                                    rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongShapeOfInputDataForAMethod
+onto:WrongShapeOfInputDataForAMethod rdf:type owl:Class ;
+                                     rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongTypeOfActivationFunction
+onto:WrongTypeOfActivationFunction rdf:type owl:Class ;
+                                   rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongTypeOfInputDataForALayer
+onto:WrongTypeOfInputDataForALayer rdf:type owl:Class ;
+                                   rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongTypeOfInputDataForAMethod
+onto:WrongTypeOfInputDataForAMethod rdf:type owl:Class ;
+                                    rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongTypeOfPoolingLayer
+onto:WrongTypeOfPoolingLayer rdf:type owl:Class ;
+                             rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongUsageOfImageDecodingAPI
+onto:WrongUsageOfImageDecodingAPI rdf:type owl:Class ;
+                                  rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongUsageOfPlaceholderRestorationAPI
+onto:WrongUsageOfPlaceholderRestorationAPI rdf:type owl:Class ;
+                                           rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WrongWeightsInitialisation
+onto:WrongWeightsInitialisation rdf:type owl:Class ;
+                                rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WronglyImplementedDataBatching
+onto:WronglyImplementedDataBatching rdf:type owl:Class ;
+                                    rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#WronglyImplementedDataTransferFunctionCPUGPU
+onto:WronglyImplementedDataTransferFunctionCPUGPU rdf:type owl:Class ;
+                                                  rdfs:subClassOf gufo:FunctionalComplex .
+
+
+###  http://ontomlt.com#wrongTypeOfInputData
+onto:wrongTypeOfInputData rdf:type owl:Class ;
+                          rdfs:subClassOf gufo:FunctionalComplex .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://ontomlt.com#API
+onto:API rdf:type owl:NamedIndividual ,
+                  gufo:Kind .
+
+
+###  http://ontomlt.com#APIFault
+onto:APIFault rdf:type owl:NamedIndividual ,
+                       gufo:Kind .
+
+
+###  http://ontomlt.com#ActivationFunction
+onto:ActivationFunction rdf:type owl:NamedIndividual ,
+                                 gufo:Kind .
+
+
+###  http://ontomlt.com#Algorithm
+onto:Algorithm rdf:type owl:NamedIndividual ,
+                        gufo:Kind .
+
+
+###  http://ontomlt.com#BiasNeededInALayer
+onto:BiasNeededInALayer rdf:type owl:NamedIndividual ,
+                                 gufo:Kind .
+
+
+###  http://ontomlt.com#CallingUnsupportedOperationsOnCUDATensors
+onto:CallingUnsupportedOperationsOnCUDATensors rdf:type owl:NamedIndividual ,
+                                                        gufo:Kind .
+
+
+###  http://ontomlt.com#Class
+onto:Class rdf:type owl:NamedIndividual ,
+                    gufo:Kind .
+
+
+###  http://ontomlt.com#ConversionToCUDATensorInsideTheTrainingtestLoo
+onto:ConversionToCUDATensorInsideTheTrainingtestLoo rdf:type owl:NamedIndividual ,
+                                                             gufo:Kind .
+
+
+###  http://ontomlt.com#Data
+onto:Data rdf:type owl:NamedIndividual ,
+                   gufo:Kind .
+
+
+###  http://ontomlt.com#DataCharacteristic
+onto:DataCharacteristic rdf:type owl:NamedIndividual ,
+                                 gufo:Kind .
+
+
+###  http://ontomlt.com#DataInput
+onto:DataInput rdf:type owl:NamedIndividual ,
+                        gufo:Kind .
+
+
+###  http://ontomlt.com#Dataset
+onto:Dataset rdf:type owl:NamedIndividual ,
+                      gufo:Kind .
+
+
+###  http://ontomlt.com#DatasetCharacteristic
+onto:DatasetCharacteristic rdf:type owl:NamedIndividual ,
+                                    gufo:Kind .
+
+
+###  http://ontomlt.com#DeprecatedAPI
+onto:DeprecatedAPI rdf:type owl:NamedIndividual ,
+                            gufo:Kind .
+
+
+###  http://ontomlt.com#DiscardingImportantFeatures
+onto:DiscardingImportantFeatures rdf:type owl:NamedIndividual ,
+                                          gufo:Kind .
+
+
+###  http://ontomlt.com#EvaluationMeasure
+onto:EvaluationMeasure rdf:type owl:NamedIndividual ,
+                                gufo:EventType .
+
+
+###  http://ontomlt.com#EvaluationProcedure
+onto:EvaluationProcedure rdf:type owl:NamedIndividual ,
+                                  gufo:EventType .
+
+
+###  http://ontomlt.com#EvaluationSpecification
+onto:EvaluationSpecification rdf:type owl:NamedIndividual ,
+                                      gufo:EventType .
+
+
+###  http://ontomlt.com#Experiment
+onto:Experiment rdf:type owl:NamedIndividual ,
+                         gufo:EventType .
+
+
+###  http://ontomlt.com#Failure
+onto:Failure rdf:type owl:NamedIndividual ,
+                      gufo:Kind .
+
+
+###  http://ontomlt.com#FeatueCharacteristic
+onto:FeatueCharacteristic rdf:type owl:NamedIndividual ,
+                                   gufo:Kind .
+
+
+###  http://ontomlt.com#Feature
+onto:Feature rdf:type owl:NamedIndividual ,
+                      gufo:Kind .
+
+
+###  http://ontomlt.com#Feedback
+onto:Feedback rdf:type owl:NamedIndividual ,
+                       gufo:Kind .
+
+
+###  http://ontomlt.com#GPU
+onto:GPU rdf:type owl:NamedIndividual ,
+                  gufo:Kind .
+
+
+###  http://ontomlt.com#GPUFault
+onto:GPUFault rdf:type owl:NamedIndividual ,
+                       gufo:Kind .
+
+
+###  http://ontomlt.com#GPUTensorIsUsedInsteadOfCPUTensor
+onto:GPUTensorIsUsedInsteadOfCPUTensor rdf:type owl:NamedIndividual ,
+                                                gufo:Kind .
+
+
+###  http://ontomlt.com#Hardware
+onto:Hardware rdf:type owl:NamedIndividual ,
+                       gufo:Kind .
+
+
+###  http://ontomlt.com#Hyperparameter
+onto:Hyperparameter rdf:type owl:NamedIndividual ,
+                             gufo:Kind .
+
+
+###  http://ontomlt.com#HyperparameterFault
+onto:HyperparameterFault rdf:type owl:NamedIndividual ,
+                                  gufo:Kind .
+
+
+###  http://ontomlt.com#HyperparameterSetting
+onto:HyperparameterSetting rdf:type owl:NamedIndividual ,
+                                    gufo:Kind .
+
+
+###  http://ontomlt.com#ImplemantationCharacteristic
+onto:ImplemantationCharacteristic rdf:type owl:NamedIndividual ,
+                                           gufo:Kind .
+
+
+###  http://ontomlt.com#Implementation
+onto:Implementation rdf:type owl:NamedIndividual ,
+                             gufo:EventType .
+
+
+###  http://ontomlt.com#ImplementationOfAutomatedTests
+onto:ImplementationOfAutomatedTests rdf:type owl:NamedIndividual ,
+                                             gufo:EventType .
+
+
+###  http://ontomlt.com#IncorrectDataBatchSize
+onto:IncorrectDataBatchSize rdf:type owl:NamedIndividual ,
+                                     gufo:Kind .
+
+
+###  http://ontomlt.com#IncorrectLearningRate
+onto:IncorrectLearningRate rdf:type owl:NamedIndividual ,
+                                    gufo:Kind .
+
+
+###  http://ontomlt.com#IncorrectNumberOfEpochs
+onto:IncorrectNumberOfEpochs rdf:type owl:NamedIndividual ,
+                                      gufo:Kind .
+
+
+###  http://ontomlt.com#IncorrectStateSharing
+onto:IncorrectStateSharing rdf:type owl:NamedIndividual ,
+                                    gufo:Kind .
+
+
+###  http://ontomlt.com#InputFault
+onto:InputFault rdf:type owl:NamedIndividual ,
+                         gufo:Kind .
+
+
+###  http://ontomlt.com#IterationAndImprovement
+onto:IterationAndImprovement rdf:type owl:NamedIndividual ,
+                                      gufo:EventType .
+
+
+###  http://ontomlt.com#LayerFault
+onto:LayerFault rdf:type owl:NamedIndividual ,
+                         gufo:Kind .
+
+
+###  http://ontomlt.com#LayerProperties
+onto:LayerProperties rdf:type owl:NamedIndividual ,
+                              gufo:Kind .
+
+
+###  http://ontomlt.com#LayersDimensionsMismatch
+onto:LayersDimensionsMismatch rdf:type owl:NamedIndividual ,
+                                       gufo:Kind .
+
+
+###  http://ontomlt.com#LowQualityTrainingData
+onto:LowQualityTrainingData rdf:type owl:NamedIndividual ,
+                                     gufo:Kind .
+
+
+###  http://ontomlt.com#Metrics
+onto:Metrics rdf:type owl:NamedIndividual ,
+                      gufo:Kind .
+
+
+###  http://ontomlt.com#MissingAPICall
+onto:MissingAPICall rdf:type owl:NamedIndividual ,
+                             gufo:Kind .
+
+
+###  http://ontomlt.com#MissingArgumentScoping
+onto:MissingArgumentScoping rdf:type owl:NamedIndividual ,
+                                     gufo:Kind .
+
+
+###  http://ontomlt.com#MissingAveragePoolingLayer
+onto:MissingAveragePoolingLayer rdf:type owl:NamedIndividual ,
+                                         gufo:Kind .
+
+
+###  http://ontomlt.com#MissingDataAugmentatio
+onto:MissingDataAugmentatio rdf:type owl:NamedIndividual ,
+                                     gufo:Kind .
+
+
+###  http://ontomlt.com#MissingDenseLayer
+onto:MissingDenseLayer rdf:type owl:NamedIndividual ,
+                                gufo:Kind .
+
+
+###  http://ontomlt.com#MissingDestinationGPUDevice
+onto:MissingDestinationGPUDevice rdf:type owl:NamedIndividual ,
+                                          gufo:Kind .
+
+
+###  http://ontomlt.com#MissingDropoutLayer
+onto:MissingDropoutLayer rdf:type owl:NamedIndividual ,
+                                  gufo:Kind .
+
+
+###  http://ontomlt.com#MissingFlattenLayer
+onto:MissingFlattenLayer rdf:type owl:NamedIndividual ,
+                                  gufo:Kind .
+
+
+###  http://ontomlt.com#MissingGlobalVariablesInitialisation
+onto:MissingGlobalVariablesInitialisation rdf:type owl:NamedIndividual ,
+                                                   gufo:Kind .
+
+
+###  http://ontomlt.com#MissingNormalisLayers
+onto:MissingNormalisLayers rdf:type owl:NamedIndividual ,
+                                    gufo:Kind .
+
+
+###  http://ontomlt.com#MissingRegularizationlossAndWeight
+onto:MissingRegularizationlossAndWeight rdf:type owl:NamedIndividual ,
+                                                 gufo:Kind .
+
+
+###  http://ontomlt.com#MissingReluActivationFunction
+onto:MissingReluActivationFunction rdf:type owl:NamedIndividual ,
+                                            gufo:Kind .
+
+
+###  http://ontomlt.com#MissingSoftmaxActivationFunction
+onto:MissingSoftmaxActivationFunction rdf:type owl:NamedIndividual ,
+                                               gufo:Kind .
+
+
+###  http://ontomlt.com#MissingSoftmaxLayer
+onto:MissingSoftmaxLayer rdf:type owl:NamedIndividual ,
+                                  gufo:Kind .
+
+
+###  http://ontomlt.com#MissingSqueeze
+onto:MissingSqueeze rdf:type owl:NamedIndividual ,
+                             gufo:Kind .
+
+
+###  http://ontomlt.com#MissingTransferOfDataToGPU
+onto:MissingTransferOfDataToGPU rdf:type owl:NamedIndividual ,
+                                         gufo:Kind .
+
+
+###  http://ontomlt.com#Model
+onto:Model rdf:type owl:NamedIndividual ,
+                    gufo:Kind .
+
+
+###  http://ontomlt.com#ModelCharacteristic
+onto:ModelCharacteristic rdf:type owl:NamedIndividual ,
+                                  gufo:Kind .
+
+
+###  http://ontomlt.com#ModelEvaluation
+onto:ModelEvaluation rdf:type owl:NamedIndividual ,
+                              gufo:Kind .
+
+
+###  http://ontomlt.com#ModelFault
+onto:ModelFault rdf:type owl:NamedIndividual ,
+                         gufo:Kind .
+
+
+###  http://ontomlt.com#ModelProperties
+onto:ModelProperties rdf:type owl:NamedIndividual ,
+                              gufo:Kind .
+
+
+###  http://ontomlt.com#ModelTooBigToFitIntoAvailableMemory
+onto:ModelTooBigToFitIntoAvailableMemory rdf:type owl:NamedIndividual ,
+                                                  gufo:Kind .
+
+
+###  http://ontomlt.com#ModelTrainingFault
+onto:ModelTrainingFault rdf:type owl:NamedIndividual ,
+                                 gufo:Kind .
+
+
+###  http://ontomlt.com#ModelTraning
+onto:ModelTraning rdf:type owl:NamedIndividual ,
+                           gufo:EventType .
+
+
+###  http://ontomlt.com#ModelType
+onto:ModelType rdf:type owl:NamedIndividual ,
+                        gufo:Kind .
+
+
+###  http://ontomlt.com#ModelTypeWrongSelection
+onto:ModelTypeWrongSelection rdf:type owl:NamedIndividual ,
+                                      gufo:Kind .
+
+
+###  http://ontomlt.com#ModelUpdate
+onto:ModelUpdate rdf:type owl:NamedIndividual ,
+                          gufo:EventType .
+
+
+###  http://ontomlt.com#MultipleInitialisationsOfCNN
+onto:MultipleInitialisationsOfCNN rdf:type owl:NamedIndividual ,
+                                           gufo:Kind .
+
+
+###  http://ontomlt.com#NotEnoughTrainingData
+onto:NotEnoughTrainingData rdf:type owl:NamedIndividual ,
+                                    gufo:Kind .
+
+
+###  http://ontomlt.com#OverlappingOutputClassesInTrainingData
+onto:OverlappingOutputClassesInTrainingData rdf:type owl:NamedIndividual ,
+                                                     gufo:Kind .
+
+
+###  http://ontomlt.com#RedundantDataAugmentatio
+onto:RedundantDataAugmentatio rdf:type owl:NamedIndividual ,
+                                       gufo:Kind .
+
+
+###  http://ontomlt.com#RedundantSoftmaxLayer
+onto:RedundantSoftmaxLayer rdf:type owl:NamedIndividual ,
+                                    gufo:Kind .
+
+
+###  http://ontomlt.com#ReferenceForNonExistingCheckpoint
+onto:ReferenceForNonExistingCheckpoint rdf:type owl:NamedIndividual ,
+                                                gufo:Kind .
+
+
+###  http://ontomlt.com#Requirement
+onto:Requirement rdf:type owl:NamedIndividual ,
+                          gufo:Kind .
+
+
+###  http://ontomlt.com#ResultReport
+onto:ResultReport rdf:type owl:NamedIndividual ,
+                           gufo:Kind .
+
+
+###  http://ontomlt.com#Retest
+onto:Retest rdf:type owl:NamedIndividual ,
+                     gufo:EventType .
+
+
+###  http://ontomlt.com#Run
+onto:Run rdf:type owl:NamedIndividual ,
+                  gufo:EventType .
+
+
+###  http://ontomlt.com#SmallRangeOfValuesForAFeature
+onto:SmallRangeOfValuesForAFeature rdf:type owl:NamedIndividual ,
+                                            gufo:Kind .
+
+
+###  http://ontomlt.com#Software
+onto:Software rdf:type owl:NamedIndividual ,
+                       gufo:Kind .
+
+
+###  http://ontomlt.com#Study
+onto:Study rdf:type owl:NamedIndividual ,
+                    gufo:EventType .
+
+
+###  http://ontomlt.com#SuboptimalBatchSize
+onto:SuboptimalBatchSize rdf:type owl:NamedIndividual ,
+                                  gufo:Kind .
+
+
+###  http://ontomlt.com#SuboptimalNetworkStructure
+onto:SuboptimalNetworkStructure rdf:type owl:NamedIndividual ,
+                                         gufo:Kind .
+
+
+###  http://ontomlt.com#SuboptimalNumberOfNeuronsInTheLayer
+onto:SuboptimalNumberOfNeuronsInTheLayer rdf:type owl:NamedIndividual ,
+                                                  gufo:Kind .
+
+
+###  http://ontomlt.com#Task
+onto:Task rdf:type owl:NamedIndividual ,
+                   gufo:Kind .
+
+
+###  http://ontomlt.com#Tensor
+onto:Tensor rdf:type owl:NamedIndividual ,
+                     gufo:Kind .
+
+
+###  http://ontomlt.com#TensorShapeFault
+onto:TensorShapeFault rdf:type owl:NamedIndividual ,
+                               gufo:Kind .
+
+
+###  http://ontomlt.com#TestCase
+onto:TestCase rdf:type owl:NamedIndividual ,
+                       gufo:Kind .
+
+
+###  http://ontomlt.com#TestCaseDevelopment
+onto:TestCaseDevelopment rdf:type owl:NamedIndividual ,
+                                  gufo:EventType .
+
+
+###  http://ontomlt.com#TestExecution
+onto:TestExecution rdf:type owl:NamedIndividual ,
+                            gufo:EventType .
+
+
+###  http://ontomlt.com#TestPlanning
+onto:TestPlanning rdf:type owl:NamedIndividual ,
+                           gufo:EventType .
+
+
+###  http://ontomlt.com#TestResultsEvaluation
+onto:TestResultsEvaluation rdf:type owl:NamedIndividual ,
+                                    gufo:EventType .
+
+
+###  http://ontomlt.com#TooManyOutputCategories
+onto:TooManyOutputCategories rdf:type owl:NamedIndividual ,
+                                      gufo:Kind .
+
+
+###  http://ontomlt.com#TrainingDataFaults
+onto:TrainingDataFaults rdf:type owl:NamedIndividual ,
+                                 gufo:Kind .
+
+
+###  http://ontomlt.com#UnbalancedTrainingData
+onto:UnbalancedTrainingData rdf:type owl:NamedIndividual ,
+                                     gufo:Kind .
+
+
+###  http://ontomlt.com#WorongReferenceToOperationalGraph
+onto:WorongReferenceToOperationalGraph rdf:type owl:NamedIndividual ,
+                                                gufo:Kind .
+
+
+###  http://ontomlt.com#WrongAmountTypeOfPoolingInConvolutionalLayer
+onto:WrongAmountTypeOfPoolingInConvolutionalLayer rdf:type owl:NamedIndividual ,
+                                                           gufo:Kind .
+
+
+###  http://ontomlt.com#WrongDataParallelismOnGPUs
+onto:WrongDataParallelismOnGPUs rdf:type owl:NamedIndividual ,
+                                         gufo:Kind .
+
+
+###  http://ontomlt.com#WrongDefinedInputOutputShape
+onto:WrongDefinedInputOutputShape rdf:type owl:NamedIndividual ,
+                                           gufo:Kind .
+
+
+###  http://ontomlt.com#WrongDefinedInputShape
+onto:WrongDefinedInputShape rdf:type owl:NamedIndividual ,
+                                     gufo:Kind .
+
+
+###  http://ontomlt.com#WrongDefinedOutputShape
+onto:WrongDefinedOutputShape rdf:type owl:NamedIndividual ,
+                                      gufo:Kind .
+
+
+###  http://ontomlt.com#WrongFilterSizeForAConvolutionalLayer
+onto:WrongFilterSizeForAConvolutionalLayer rdf:type owl:NamedIndividual ,
+                                                    gufo:Kind .
+
+
+###  http://ontomlt.com#WrongIndexing
+onto:WrongIndexing rdf:type owl:NamedIndividual ,
+                            gufo:Kind .
+
+
+###  http://ontomlt.com#WrongInputSampleSizeForLinearLayer
+onto:WrongInputSampleSizeForLinearLayer rdf:type owl:NamedIndividual ,
+                                                 gufo:Kind .
+
+
+###  http://ontomlt.com#WrongLabelsForTrainingData
+onto:WrongLabelsForTrainingData rdf:type owl:NamedIndividual ,
+                                         gufo:Kind .
+
+
+###  http://ontomlt.com#WrongLayer
+onto:WrongLayer rdf:type owl:NamedIndividual ,
+                         gufo:Kind .
+
+
+###  http://ontomlt.com#WrongLayerType
+onto:WrongLayerType rdf:type owl:NamedIndividual ,
+                             gufo:Kind .
+
+
+###  http://ontomlt.com#WrongManagementOfMemoryResources
+onto:WrongManagementOfMemoryResources rdf:type owl:NamedIndividual ,
+                                               gufo:Kind .
+
+
+###  http://ontomlt.com#WrongModelInitialisation
+onto:WrongModelInitialisation rdf:type owl:NamedIndividual ,
+                                       gufo:Kind .
+
+
+###  http://ontomlt.com#WrongNetworkArchitecture
+onto:WrongNetworkArchitecture rdf:type owl:NamedIndividual ,
+                                       gufo:Kind .
+
+
+###  http://ontomlt.com#WrongOutputPadding
+onto:WrongOutputPadding rdf:type owl:NamedIndividual ,
+                                 gufo:Kind .
+
+
+###  http://ontomlt.com#WrongPositionOfDataShuffleOperation
+onto:WrongPositionOfDataShuffleOperation rdf:type owl:NamedIndividual ,
+                                                  gufo:Kind .
+
+
+###  http://ontomlt.com#WrongReferenceToGPUDevice
+onto:WrongReferenceToGPUDevice rdf:type owl:NamedIndividual ,
+                                        gufo:Kind .
+
+
+###  http://ontomlt.com#WrongSelectionOfFeatures
+onto:WrongSelectionOfFeatures rdf:type owl:NamedIndividual ,
+                                       gufo:Kind .
+
+
+###  http://ontomlt.com#WrongShapeOfInputData
+onto:WrongShapeOfInputData rdf:type owl:NamedIndividual ,
+                                    gufo:Kind .
+
+
+###  http://ontomlt.com#WrongShapeOfInputDataForALayer
+onto:WrongShapeOfInputDataForALayer rdf:type owl:NamedIndividual ,
+                                             gufo:Kind .
+
+
+###  http://ontomlt.com#WrongShapeOfInputDataForAMethod
+onto:WrongShapeOfInputDataForAMethod rdf:type owl:NamedIndividual ,
+                                              gufo:Kind .
+
+
+###  http://ontomlt.com#WrongTypeOfActivationFunction
+onto:WrongTypeOfActivationFunction rdf:type owl:NamedIndividual ,
+                                            gufo:Kind .
+
+
+###  http://ontomlt.com#WrongTypeOfInputDataForALayer
+onto:WrongTypeOfInputDataForALayer rdf:type owl:NamedIndividual ,
+                                            gufo:Kind .
+
+
+###  http://ontomlt.com#WrongTypeOfInputDataForAMethod
+onto:WrongTypeOfInputDataForAMethod rdf:type owl:NamedIndividual ,
+                                             gufo:Kind .
+
+
+###  http://ontomlt.com#WrongTypeOfPoolingLayer
+onto:WrongTypeOfPoolingLayer rdf:type owl:NamedIndividual ,
+                                      gufo:Kind .
+
+
+###  http://ontomlt.com#WrongUsageOfImageDecodingAPI
+onto:WrongUsageOfImageDecodingAPI rdf:type owl:NamedIndividual ,
+                                           gufo:Kind .
+
+
+###  http://ontomlt.com#WrongUsageOfPlaceholderRestorationAPI
+onto:WrongUsageOfPlaceholderRestorationAPI rdf:type owl:NamedIndividual ,
+                                                    gufo:Kind .
+
+
+###  http://ontomlt.com#WrongWeightsInitialisation
+onto:WrongWeightsInitialisation rdf:type owl:NamedIndividual ,
+                                         gufo:Kind .
+
+
+###  http://ontomlt.com#WronglyImplementedDataBatching
+onto:WronglyImplementedDataBatching rdf:type owl:NamedIndividual ,
+                                             gufo:Kind .
+
+
+###  http://ontomlt.com#WronglyImplementedDataTransferFunctionCPUGPU
+onto:WronglyImplementedDataTransferFunctionCPUGPU rdf:type owl:NamedIndividual ,
+                                                           gufo:Kind .
+
+
+###  http://ontomlt.com#faultAPI1
+onto:faultAPI1 rdf:type owl:NamedIndividual ,
+                        onto:APIFault ;
+               onto:faultName "x" .
+
+
+###  http://ontomlt.com#wrongTypeOfInputData
+onto:wrongTypeOfInputData rdf:type owl:NamedIndividual ,
+                                   gufo:Kind .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+onto:API rdfs:label "API"@en .
+
+
+onto:APIFault rdfs:label "API Fault"@en .
+
+
+onto:ActivationFunction rdfs:label """Activation
+Function"""@en .
+
+
+onto:Algorithm rdfs:label "Algorithm"@en .
+
+
+onto:BiasNeededInALayer rdfs:label """Bias needed
+in a layer"""@en .
+
+
+onto:CallingUnsupportedOperationsOnCUDATensors rdfs:label """Calling
+unsupported
+operations on
+CUDA tensors"""@en .
+
+
+onto:Class rdfs:label "Class"@en .
+
+
+onto:ConversionToCUDATensorInsideTheTrainingtestLoo rdfs:label """Conversion to
+CUDA tensor
+inside the
+training/test loo"""@en .
+
+
+onto:Data rdfs:label "Data"@en .
+
+
+onto:DataCharacteristic rdfs:label "Data Characteristic"@en .
+
+
+onto:DataInput rdfs:label "Data Input"@en .
+
+
+onto:Dataset rdfs:label "Dataset"@en .
+
+
+onto:DatasetCharacteristic rdfs:label "Dataset Characteristic"@en .
+
+
+onto:DeprecatedAPI rdfs:label "Deprecated API"@en .
+
+
+onto:DiscardingImportantFeatures rdfs:label """Discarding
+important
+features"""@en .
+
+
+onto:EvaluationMeasure rdfs:label "Evaluation Measure"@en .
+
+
+onto:EvaluationProcedure rdfs:label "Evaluation Procedure"@en .
+
+
+onto:EvaluationSpecification rdfs:label "Evaluation Specification"@en .
+
+
+onto:Experiment rdfs:label "Experiment"@en .
+
+
+onto:Failure rdfs:label "Failure"@en .
+
+
+onto:FeatueCharacteristic rdfs:label "Featue Characteristic"@en .
+
+
+onto:Feature rdfs:label "Feature"@en .
+
+
+onto:Feedback rdfs:label "Feedback"@en .
+
+
+onto:GPU rdfs:label "GPU"@en .
+
+
+onto:GPUFault rdfs:label "GPU Fault"@en .
+
+
+onto:GPUTensorIsUsedInsteadOfCPUTensor rdfs:label """GPU tensor is
+used instead of
+CPU tensor"""@en .
+
+
+onto:Hardware rdfs:label "Hardware"@en .
+
+
+onto:Hyperparameter rdfs:label "Hyperparameter"@en .
+
+
+onto:HyperparameterFault rdfs:label "Hyperparameter Fault"@en .
+
+
+onto:HyperparameterSetting rdfs:label "Hyperparameter Setting"@en .
+
+
+onto:ImplemantationCharacteristic rdfs:label "Implemantation Characteristic"@en .
+
+
+onto:Implementation rdfs:label "Implementation"@en .
+
+
+onto:ImplementationOfAutomatedTests rdfs:label "Implementation of automated tests"@en .
+
+
+onto:IncorrectDataBatchSize rdfs:label "Incorrect data batch size"@en .
+
+
+onto:IncorrectLearningRate rdfs:label "Incorrect learning rate"@en .
+
+
+onto:IncorrectNumberOfEpochs rdfs:label "Incorrect number of epochs"@en .
+
+
+onto:IncorrectStateSharing rdfs:label """Incorrect
+state
+sharing"""@en .
+
+
+onto:InputFault rdfs:label "Input Fault"@en .
+
+
+onto:IterationAndImprovement rdfs:label "Iteration and Improvement"@en .
+
+
+onto:LayerFault rdfs:label "Layer Fault"@en .
+
+
+onto:LayerProperties rdfs:label "Layer Properties"@en .
+
+
+onto:LayersDimensionsMismatch rdfs:label """Layers'
+dimensions
+mismatch"""@en .
+
+
+onto:LowQualityTrainingData rdfs:label """Low quality
+training data"""@en .
+
+
+onto:Metrics rdfs:label "Metrics"@en .
+
+
+onto:MissingAPICall rdfs:label """Missing API
+call"""@en .
+
+
+onto:MissingArgumentScoping rdfs:label """Missing
+argument
+scoping"""@en .
+
+
+onto:MissingAveragePoolingLayer rdfs:label """Missing
+average pooling layer"""@en .
+
+
+onto:MissingDataAugmentatio rdfs:label """Missing data
+augmentatio"""@en .
+
+
+onto:MissingDenseLayer rdfs:label """Missing
+dense layer"""@en .
+
+
+onto:MissingDestinationGPUDevice rdfs:label """Missing
+destination
+GPU device"""@en .
+
+
+onto:MissingDropoutLayer rdfs:label """Missing
+dropout layer"""@en .
+
+
+onto:MissingFlattenLayer rdfs:label """Missing
+flatten layer"""@en .
+
+
+onto:MissingGlobalVariablesInitialisation rdfs:label """Missing global
+variables
+initialisation"""@en .
+
+
+onto:MissingNormalisLayers rdfs:label """Missing
+normalis layers"""@en .
+
+
+onto:MissingRegularizationlossAndWeight rdfs:label "Missing regularization (loss and weight)"@en .
+
+
+onto:MissingReluActivationFunction rdfs:label """Missing relu
+activation
+function"""@en .
+
+
+onto:MissingSoftmaxActivationFunction rdfs:label """Missing
+softmax activation function"""@en .
+
+
+onto:MissingSoftmaxLayer rdfs:label """Missing
+softmax layer"""@en .
+
+
+onto:MissingSqueeze rdfs:label """Missing
+squeeze"""@en .
+
+
+onto:MissingTransferOfDataToGPU rdfs:label """Missing
+transfer of
+data to GPU"""@en .
+
+
+onto:Model rdfs:label "Model"@en .
+
+
+onto:ModelCharacteristic rdfs:label "Model Characteristic"@en .
+
+
+onto:ModelEvaluation rdfs:label "Model Evaluation"@en .
+
+
+onto:ModelFault rdfs:label "Model Fault"@en .
+
+
+onto:ModelProperties rdfs:label "Model Properties"@en .
+
+
+onto:ModelTooBigToFitIntoAvailableMemory rdfs:label """Model too big to
+fit into available
+memory"""@en .
+
+
+onto:ModelTrainingFault rdfs:label "Model Training Fault"@en .
+
+
+onto:ModelTraning rdfs:label "Model Traning"@en .
+
+
+onto:ModelType rdfs:label "Model Type "@en .
+
+
+onto:ModelTypeWrongSelection rdfs:label "Model Type Wrong Selection "@en .
+
+
+onto:ModelUpdate rdfs:label "Model update"@en .
+
+
+onto:MultipleInitialisationsOfCNN rdfs:label """Multiple initialisations
+of CNN"""@en .
+
+
+onto:NotEnoughTrainingData rdfs:label """Not enough
+training data"""@en .
+
+
+onto:OverlappingOutputClassesInTrainingData rdfs:label """Overlapping
+output classes in
+training data"""@en .
+
+
+onto:RedundantDataAugmentatio rdfs:label """Redundant
+data
+augmentatio"""@en .
+
+
+onto:RedundantSoftmaxLayer rdfs:label """Redundant
+softmax layer"""@en .
+
+
+onto:ReferenceForNonExistingCheckpoint rdfs:label """Reference for
+non-existing
+checkpoint"""@en .
+
+
+onto:Requirement rdfs:label "Requirement "@en .
+
+
+onto:ResultReport rdfs:label "Result Report"@en .
+
+
+onto:Retest rdfs:label "Retest"@en .
+
+
+onto:Run rdfs:label "Run"@en .
+
+
+onto:SmallRangeOfValuesForAFeature rdfs:label """Small range of
+values for a
+feature"""@en .
+
+
+onto:Software rdfs:label "Software"@en .
+
+
+onto:Study rdfs:label "Study"@en .
+
+
+onto:SuboptimalBatchSize rdfs:label "Suboptimal batch size"@en .
+
+
+onto:SuboptimalNetworkStructure rdfs:label """Suboptimal network
+structure"""@en .
+
+
+onto:SuboptimalNumberOfNeuronsInTheLayer rdfs:label """Suboptimal
+number of
+neurons in the
+layer"""@en .
+
+
+onto:Task rdfs:label "Task"@en .
+
+
+onto:Tensor rdfs:label "Tensor"@en .
+
+
+onto:TensorShapeFault rdfs:label "Tensor Shape Fault"@en .
+
+
+onto:TestCase rdfs:label "Test Case"@en .
+
+
+onto:TestCaseDevelopment rdfs:label "Test Case Development"@en .
+
+
+onto:TestExecution rdfs:label """Test Execution
+"""@en .
+
+
+onto:TestPlanning rdfs:label "Test Planning"@en .
+
+
+onto:TestResultsEvaluation rdfs:label "Test Results Evaluation"@en .
+
+
+onto:TooManyOutputCategories rdfs:label """Too many
+output
+categories"""@en .
+
+
+onto:TrainingDataFaults rdfs:label "Training Data Faults"@en .
+
+
+onto:UnbalancedTrainingData rdfs:label """Unbalanced
+training data"""@en .
+
+
+onto:WorongReferenceToOperationalGraph rdfs:label """Worong reference to
+operational
+graph"""@en .
+
+
+onto:WrongAmountTypeOfPoolingInConvolutionalLayer rdfs:label """Wrong amount &
+type of pooling
+in convolutional
+layer"""@en .
+
+
+onto:WrongDataParallelismOnGPUs rdfs:label """Wrong data
+parallelism on
+GPUs"""@en .
+
+
+onto:WrongDefinedInputOutputShape rdfs:label """Wrong defined
+input & output
+shape"""@en .
+
+
+onto:WrongDefinedInputShape rdfs:label """Wrong
+defined input
+shape"""@en .
+
+
+onto:WrongDefinedOutputShape rdfs:label """Wrong
+defined
+output shape"""@en .
+
+
+onto:WrongFilterSizeForAConvolutionalLayer rdfs:label """Wrong filter size
+for a convolutional
+layer"""@en .
+
+
+onto:WrongIndexing rdfs:label """Wrong
+indexing"""@en .
+
+
+onto:WrongInputSampleSizeForLinearLayer rdfs:label """Wrong input
+sample size
+for linear layer"""@en .
+
+
+onto:WrongLabelsForTrainingData rdfs:label """Wrong labels
+for training data"""@en .
+
+
+onto:WrongLayer rdfs:label "Wrong Layer "@en .
+
+
+onto:WrongLayerType rdfs:label """Wrong layer
+type"""@en .
+
+
+onto:WrongManagementOfMemoryResources rdfs:label """Wrong
+management of
+memory
+resources"""@en .
+
+
+onto:WrongModelInitialisation rdfs:label """Wrong model
+initialisation"""@en .
+
+
+onto:WrongNetworkArchitecture rdfs:label """Wrong network
+architecture"""@en .
+
+
+onto:WrongOutputPadding rdfs:label """Wrong
+output
+padding"""@en .
+
+
+onto:WrongPositionOfDataShuffleOperation rdfs:label "Wrong position of data shuffle operation"@en .
+
+
+onto:WrongReferenceToGPUDevice rdfs:label """Wrong
+reference to
+GPU device"""@en .
+
+
+onto:WrongSelectionOfFeatures rdfs:label """Wrong
+selection of features"""@en .
+
+
+onto:WrongShapeOfInputData rdfs:label """Wrong shape
+of input data"""@en .
+
+
+onto:WrongShapeOfInputDataForALayer rdfs:label """Wrong shape
+of input data
+for a layer"""@en .
+
+
+onto:WrongShapeOfInputDataForAMethod rdfs:label """Wrong shape
+of input data
+for a method"""@en .
+
+
+onto:WrongTypeOfActivationFunction rdfs:label "Wrong type of activation function"@en .
+
+
+onto:WrongTypeOfInputDataForALayer rdfs:label """Wrong type
+of input data
+for a layer"""@en .
+
+
+onto:WrongTypeOfInputDataForAMethod rdfs:label """Wrong type
+of input data
+for a method"""@en .
+
+
+onto:WrongTypeOfPoolingLayer rdfs:label """Wrong type
+of pooling
+layer"""@en .
+
+
+onto:WrongUsageOfImageDecodingAPI rdfs:label """Wrong usage
+of image
+decoding API"""@en .
+
+
+onto:WrongUsageOfPlaceholderRestorationAPI rdfs:label """Wrong usage
+of placeholder
+restoration API"""@en .
+
+
+onto:WrongWeightsInitialisation rdfs:label """Wrong
+weights initialisation"""@en .
+
+
+onto:WronglyImplementedDataBatching rdfs:label "Wrongly implemented data batching"@en .
+
+
+onto:WronglyImplementedDataTransferFunctionCPUGPU rdfs:label """Wrongly
+implemented data
+transfer function
+(CPU-GPU)"""@en .
+
+
+onto:wrongTypeOfInputData rdfs:label """wrong type
+of input data"""@en .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

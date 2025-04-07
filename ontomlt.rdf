@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://ontomlt.com#"
+     xml:base="http://ontomlt.com"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:gufo="http://purl.org/nemo/gufo#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://ontomlt.com">
+        <owl:imports rdf:resource="http://purl.org/nemo/gufo#"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontomlt.com#EvaluationMeasure -->
+
+    <owl:Class rdf:about="http://ontomlt.com#EvaluationMeasure">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontomlt.com#EvaluationProcedure -->
+
+    <owl:Class rdf:about="http://ontomlt.com#EvaluationProcedure">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontomlt.com#EvaluationSpecification -->
+
+    <owl:Class rdf:about="http://ontomlt.com#EvaluationSpecification">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontomlt.com#Experiment -->
+
+    <owl:Class rdf:about="http://ontomlt.com#Experiment">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontomlt.com#Implementation -->
+
+    <owl:Class rdf:about="http://ontomlt.com#Implementation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontomlt.com#ImplementationOfAutomatedTests -->
+
+    <owl:Class rdf:about="http://ontomlt.com#ImplementationOfAutomatedTests">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontomlt.com#IterationAndImprovement -->
+
+    <owl:Class rdf:about="http://ontomlt.com#IterationAndImprovement">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontomlt.com#ModelUpdate -->
+
+    <owl:Class rdf:about="http://ontomlt.com#ModelUpdate">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontomlt.com#Retest -->
+
+    <owl:Class rdf:about="http://ontomlt.com#Retest">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontomlt.com#Run -->
+
+    <owl:Class rdf:about="http://ontomlt.com#Run">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/nemo/gufo#isEventProperPartOf"/>
+                <owl:someValuesFrom rdf:resource="http://ontomlt.com#Experiment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontomlt.com#Study -->
+
+    <owl:Class rdf:about="http://ontomlt.com#Study">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontomlt.com#TestCaseDevelopment -->
+
+    <owl:Class rdf:about="http://ontomlt.com#TestCaseDevelopment">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontomlt.com#TestExecution -->
+
+    <owl:Class rdf:about="http://ontomlt.com#TestExecution">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontomlt.com#TestPlanning -->
+
+    <owl:Class rdf:about="http://ontomlt.com#TestPlanning">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontomlt.com#TestResultsEvaluation -->
+
+    <owl:Class rdf:about="http://ontomlt.com#TestResultsEvaluation">
+        <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Test_Case_Development"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontomlt.com#Run -->
+
+    <owl:NamedIndividual rdf:about="http://ontomlt.com#Run">
+        <rdf:type rdf:resource="http://purl.org/nemo/gufo#EventType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://ontomlt.com#Run">
+        <rdfs:label xml:lang="en">Run</rdfs:label>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
