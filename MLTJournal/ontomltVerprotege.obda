@@ -1,0 +1,18 @@
+[PrefixDeclaration]
+:		http://ontomlt.com#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+gufo:		http://purl.org/nemo/gufo#
+obda:		https://w3id.org/obda/vocabulary#
+onto:		http://ontomlt.com#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[MappingDeclaration] @collection [[
+mappingId	MAPID-779ff6d5f9b8485cbb64c4cfe632cccb
+target		:{id} a :onto:{id} , :onto:{namefault} , :onto:{description} , :onto:{api_id} . 
+source		select *
+			from API_Fault;
+]]
+
