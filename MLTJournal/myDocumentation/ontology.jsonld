@@ -2952,6 +2952,18 @@
     "@id" : "http://purl.org/nemo/gufo#FunctionalComplex"
   } ]
 }, {
+  "@id" : "http://ontomlt.com#faultAPI1",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://ontomlt.com#faultName" : [ {
+    "@value" : "x"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "http://ontomlt.com#APIFault"
+  } ]
+}, {
+  "@id" : "http://ontomlt.com#faultName",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ]
+}, {
   "@id" : "http://ontomlt.com#wrongTypeOfInputData",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class", "http://www.w3.org/2002/07/owl#NamedIndividual" ],
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {

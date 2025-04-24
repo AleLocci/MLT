@@ -8,7 +8,8 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:vann="http://purl.org/vocab/vann/"
-     xmlns:terms="http://purl.org/dc/terms/">
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:ontomlt="http://ontomlt.com#">
     <owl:Ontology rdf:about="http://ontomlt.com">
         <owl:imports rdf:resource="http://purl.org/nemo/gufo#"/>
     </owl:Ontology>
@@ -816,6 +817,13 @@ A. B. Benevides, J. R. Bourguet, G. Guizzardi, R. Penãloza, and J. P. A. Almeid
      -->
 
 
+    
+
+
+    <!-- http://ontomlt.com#faultName -->
+
+
+    <owl:DatatypeProperty rdf:about="http://ontomlt.com#faultName"/>
     
 
 
@@ -4792,6 +4800,16 @@ See gufo:TemporaryParthoodSituation for the pattern to represent the relation of
 
     <owl:NamedIndividual rdf:about="http://ontomlt.com#WronglyImplementedDataTransferFunctionCPUGPU">
         <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ontomlt.com#faultAPI1 -->
+
+
+    <owl:NamedIndividual rdf:about="http://ontomlt.com#faultAPI1">
+        <rdf:type rdf:resource="http://ontomlt.com#APIFault"/>
+        <faultName>x</faultName>
     </owl:NamedIndividual>
     
 

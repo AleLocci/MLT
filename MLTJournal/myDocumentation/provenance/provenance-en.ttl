@@ -3,6 +3,11 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix : <> .
 <..\index-en.html> a prov:Entity;
+	 dc:title "******";
+	 prov:wasAttributedTo :agent0;
+	 prov:wasAttributedTo :agent1;
 	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
 	 prov:specializationOf <http://ontomlt.com>;
 .
+:agent0 a prov:Agent; foaf:name "Alexandre Locci Martins".
+:agent1 a prov:Agent; foaf:name "Ana Cristina Vieira de Melo".

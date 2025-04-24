@@ -585,6 +585,10 @@ A. B. Benevides, J. R. Bourguet, G. Guizzardi, R. Penãloza, and J. P. A. Almeid
 #    Data properties
 #################################################################
 
+###  http://ontomlt.com#faultName
+:faultName rdf:type owl:DatatypeProperty .
+
+
 ###  http://purl.org/nemo/gufo#concernsQualityValue
 <http://purl.org/nemo/gufo#concernsQualityValue> rdf:type owl:DatatypeProperty ;
                                                  rdfs:domain <http://purl.org/nemo/gufo#QualityValueAttributionSituation> ;
@@ -3003,6 +3007,12 @@ See gufo:TemporaryParthoodSituation for the pattern to represent the relation of
 ###  http://ontomlt.com#WronglyImplementedDataTransferFunctionCPUGPU
 :WronglyImplementedDataTransferFunctionCPUGPU rdf:type owl:NamedIndividual ,
                                                        <http://purl.org/nemo/gufo#Kind> .
+
+
+###  http://ontomlt.com#faultAPI1
+:faultAPI1 rdf:type owl:NamedIndividual ,
+                    :APIFault ;
+           :faultName "x" .
 
 
 ###  http://ontomlt.com#wrongTypeOfInputData

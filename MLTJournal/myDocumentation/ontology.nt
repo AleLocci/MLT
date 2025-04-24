@@ -429,6 +429,9 @@ _:genid15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 # #################################################################
 # 
 # 
+# http://ontomlt.com#faultName
+<http://ontomlt.com#faultName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+# 
 # http://purl.org/nemo/gufo#concernsQualityValue
 <http://purl.org/nemo/gufo#concernsQualityValue> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 <http://purl.org/nemo/gufo#concernsQualityValue> <http://www.w3.org/2000/01/rdf-schema#domain> <http://purl.org/nemo/gufo#QualityValueAttributionSituation> .
@@ -2364,6 +2367,11 @@ _:genid153 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/
 # http://ontomlt.com#WronglyImplementedDataTransferFunctionCPUGPU
 <http://ontomlt.com#WronglyImplementedDataTransferFunctionCPUGPU> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://ontomlt.com#WronglyImplementedDataTransferFunctionCPUGPU> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/nemo/gufo#Kind> .
+# 
+# http://ontomlt.com#faultAPI1
+<http://ontomlt.com#faultAPI1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://ontomlt.com#faultAPI1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ontomlt.com#APIFault> .
+<http://ontomlt.com#faultAPI1> <http://ontomlt.com#faultName> "x" .
 # 
 # http://ontomlt.com#wrongTypeOfInputData
 <http://ontomlt.com#wrongTypeOfInputData> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
